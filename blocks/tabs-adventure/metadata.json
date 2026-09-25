@@ -1,0 +1,24 @@
+{
+  "variantName": "tabs-adventure",
+  "baseBlock": "tabs",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "normal",
+    "purpose": "adventure-content-tabs",
+    "imagePattern": "inline",
+    "structure": "3 tabs + rich text panels"
+  },
+  "contentPattern": "One row per tab; cell 1 = tab label; cell 2 = rich tab content (p, picture, strong, ul).",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en/adventures/bali-surf-camp.html"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "tabs-adventure"
+  ]
+}

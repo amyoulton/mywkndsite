@@ -1,0 +1,155 @@
+/*
+ * tabs-adventure: WKND adventure detail tabs (Overview / Itinerary / What to Bring).
+ * Values extracted from https://wknd.site/us/en/adventures/bali-surf-camp.html
+ * (.cmp-tabs computed styles). Source values are identical at 390px and 1440px.
+ */
+
+/* own formatting context so the tab bar's top margin stays inside the block (as on source) */
+.tabs-adventure {
+  display: flow-root;
+  color: var(--text-color);
+}
+
+/* tab bar */
+.tabs-adventure .tabs-adventure-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 18px 0;
+  padding: 0;
+}
+
+.tabs-adventure .tabs-adventure-tab {
+  box-sizing: border-box;
+  min-width: 48px;
+  max-height: 48px;
+  margin: 0;
+  padding: 8px 16px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background-color: transparent;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.tabs-adventure .tabs-adventure-tab p {
+  margin: 0;
+}
+
+.tabs-adventure .tabs-adventure-tab[aria-selected='true'] {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+/* source removes the focus ring entirely; keep a keyboard-only ring for accessibility */
+.tabs-adventure .tabs-adventure-tab:focus {
+  outline: none;
+}
+
+.tabs-adventure .tabs-adventure-tab:focus-visible {
+  position: relative;
+  z-index: 1;
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+/* panels: rich text; own formatting context so first/last child margins stay inside (as on source) */
+.tabs-adventure .tabs-adventure-panel {
+  display: flow-root;
+}
+
+.tabs-adventure .tabs-adventure-panel[aria-hidden='true'] {
+  display: none;
+}
+
+.tabs-adventure .tabs-adventure-panel:focus {
+  outline: none;
+}
+
+.tabs-adventure .tabs-adventure-panel:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.tabs-adventure .tabs-adventure-panel p {
+  margin: 0 0 13.5px;
+  line-height: var(--text-line-height);
+  text-align: justify;
+}
+
+/*
+ * Sub-headings. <h2> keeps the global h2 type (Asar 36px/54px, 27px/13.5px margins);
+ * bold-only paragraphs (<p><strong>) stay paragraph-styled, as on source.
+ * On source each sub-heading sits in its own grid cell, so its 27px top margin does
+ * not collapse with the preceding paragraph's 13.5px bottom margin.
+ */
+.tabs-adventure .tabs-adventure-panel .tabs-adventure-subheading {
+  color: var(--text-color);
+}
+
+.tabs-adventure .tabs-adventure-panel h2.tabs-adventure-subheading {
+  margin: 27px 0 13.5px;
+}
+
+.tabs-adventure .tabs-adventure-panel > p + h2.tabs-adventure-subheading,
+.tabs-adventure .tabs-adventure-panel > ul + h2.tabs-adventure-subheading,
+.tabs-adventure .tabs-adventure-panel > ol + h2.tabs-adventure-subheading {
+  margin-top: calc(27px + 13.5px);
+}
+
+.tabs-adventure .tabs-adventure-panel .tabs-adventure-subheading :is(strong, b) {
+  font-weight: 700;
+}
+
+/*
+ * images: full panel width, 7px offset above (source .cmp-image__image margin;
+ * padding here so it cannot collapse), paragraph margin below.
+ */
+.tabs-adventure .tabs-adventure-panel .tabs-adventure-image {
+  margin: 0 0 13.5px;
+  line-height: normal;
+}
+
+.tabs-adventure .tabs-adventure-panel picture {
+  display: block;
+  padding-top: 7px;
+}
+
+.tabs-adventure .tabs-adventure-panel img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* lists: no markers, small right-pointing triangle (source wknd-icon-font glyph) */
+.tabs-adventure .tabs-adventure-panel ul {
+  margin: 18px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tabs-adventure .tabs-adventure-panel ul li {
+  padding-left: 12px;
+  line-height: 2;
+}
+
+.tabs-adventure .tabs-adventure-panel ul li::before {
+  content: '';
+  position: relative;
+  top: -2.5px;
+  left: -5.75px;
+  display: inline-block;
+  width: 6.5px;
+  height: 7.5px;
+  margin-right: 3.5px;
+  background-color: currentcolor;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  vertical-align: middle;
+}

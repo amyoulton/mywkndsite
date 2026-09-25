@@ -1,0 +1,160 @@
+/*
+ * cards-contributor: centered profile cards (round photo, name, roles, icon buttons).
+ * Values from source computed styles (wknd.site about-us, .cmp-experience-fragment--contributor).
+ * Source grid: 1 column on phones, 2 from 768px, 4 above 1024px; cards touch (no gap),
+ * spacing comes from each card's own padding.
+ */
+
+/* Cards bleed into the section padding so columns match the source 1164px grid. */
+.cards-contributor > ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0 calc(-1 * var(--content-padding));
+  padding: 0;
+  list-style: none;
+}
+
+.cards-contributor .cards-contributor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 9px 28px 18px;
+  color: var(--text-color);
+  text-align: center;
+}
+
+/* Round avatar photo: 164px circle, 7px above and 14px below (185px image row). */
+.cards-contributor .cards-contributor-card-image {
+  width: 164px;
+  max-width: 100%;
+  margin: 7px 0 14px;
+}
+
+.cards-contributor .cards-contributor-card-image a {
+  display: block;
+}
+
+.cards-contributor .cards-contributor-card-image picture,
+.cards-contributor .cards-contributor-card-image img {
+  display: block;
+}
+
+.cards-contributor .cards-contributor-card-image img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cards-contributor .cards-contributor-card-body {
+  width: 100%;
+}
+
+.cards-contributor .cards-contributor-card-body > * {
+  margin: 0;
+}
+
+.cards-contributor .cards-contributor-card-name {
+  margin: 0 0 6px;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-size-l);
+  font-weight: 400;
+  line-height: 36px;
+  color: var(--text-color);
+}
+
+.cards-contributor .cards-contributor-card-roles {
+  margin: 0 0 3.5px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+/* Social links: a row of touching 48px dark square icon buttons, 18px below the roles. */
+.cards-contributor .cards-contributor-social {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 18px 0 0;
+  list-style: none;
+}
+
+.cards-contributor .cards-contributor-social li {
+  margin: 0;
+  padding: 0;
+}
+
+.cards-contributor .cards-contributor-social-link:any-link {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+  background-color: var(--dark-color);
+  color: var(--grey-color);
+  text-decoration: none;
+}
+
+/* Source keeps the button unchanged on hover; only keyboard focus gets a ring. */
+.cards-contributor .cards-contributor-social-link:hover {
+  background-color: var(--dark-color);
+  color: var(--grey-color);
+}
+
+.cards-contributor .cards-contributor-social-link:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+/*
+ * Icon glyphs sit 14px from the left and 17px from the top of the button (not centered),
+ * matching the source icon-font placement. SVG viewBoxes are cropped to the glyph.
+ */
+.cards-contributor .cards-contributor-social-link .icon {
+  position: absolute;
+  top: 17px;
+  left: 14px;
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+.cards-contributor .cards-contributor-social-facebook .icon {
+  width: 9px;
+}
+
+.cards-contributor .cards-contributor-social-twitter .icon {
+  left: 14.5px;
+  width: 22px;
+}
+
+.cards-contributor .cards-contributor-social-link .icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Network name stays available to assistive tech; the icon is the visible label. */
+.cards-contributor .cards-contributor-social-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (width >= 768px) {
+  .cards-contributor > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width > 1024px) {
+  .cards-contributor > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

@@ -1,0 +1,176 @@
+/*
+ * cards-listing: values from wknd.site computed styles (.cmp-image-list, .cmp-tabs).
+ * The source is a wrapping flex row of fixed 260px cards with a 14px right gutter,
+ * so 4 cards fit per row in the 1164px content area; narrower viewports wrap.
+ */
+
+/* Mobile first (source <= 767px): no right gutter, rows spread with space-between. */
+.cards-listing > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-listing .cards-listing-card {
+  box-sizing: content-box;
+  display: flex;
+  flex-direction: column;
+  flex: 0 1 260px;
+  min-width: 0;
+  margin: 0 0 32px;
+  padding: 0;
+}
+
+/* .cards-listing-card sets display: flex, which would override the hidden attribute. */
+.cards-listing .cards-listing-card[hidden] {
+  display: none;
+}
+
+/* Source image wrapper is 207px tall around a 200px image. */
+.cards-listing .cards-listing-card-image {
+  margin-bottom: 7px;
+}
+
+.cards-listing .cards-listing-card-image a {
+  display: block;
+}
+
+/* Source image link is not underlined (overrides the global a:any-link rule). */
+.cards-listing .cards-listing-card-image a:any-link {
+  text-decoration: none;
+}
+
+.cards-listing .cards-listing-card-image img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin: 0;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.cards-listing .cards-listing-card-body > * {
+  margin: 0;
+}
+
+/* Title: linked, uppercase, dark (not link blue); no hover change on the source. */
+.cards-listing .cards-listing-card-title {
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 27px;
+  text-transform: uppercase;
+}
+
+.cards-listing .cards-listing-card-title strong,
+.cards-listing .cards-listing-card-title b {
+  font-weight: inherit;
+}
+
+/*
+ * Titles are authored as bold links, which decorateButtons() turns into buttons.
+ * The block JS removes those classes; this also neutralises the global yellow
+ * button styles should any remain.
+ */
+.cards-listing .cards-listing-card-title a:any-link,
+.cards-listing .cards-listing-card-title a.button:any-link {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  text-transform: inherit;
+  white-space: normal;
+  overflow: visible;
+}
+
+.cards-listing .cards-listing-card-title a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Description: one line, truncated, small uppercase grey. */
+.cards-listing .cards-listing-card-description {
+  margin-top: 16px;
+  color: var(--muted-text-color);
+  font-size: var(--body-font-size-xs);
+  line-height: 21px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Option: filter. Category bar matching the source .cmp-tabs tab list. */
+
+/*
+ * New block formatting context: on the source the bar's 18px top margin adds to the
+ * heading's bottom margin; without this it collapses through the block into it.
+ */
+.cards-listing.filter {
+  display: flow-root;
+}
+
+.cards-listing.filter .cards-listing-filters {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 18px 0;
+  padding: 0;
+}
+
+.cards-listing.filter .cards-listing-filter {
+  box-sizing: border-box;
+  min-width: 48px;
+  max-height: 48px;
+  margin: 0;
+  padding: 8px 16px;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 21px;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.cards-listing.filter .cards-listing-filter:focus {
+  outline: none;
+}
+
+/* Keyboard focus only (source removes the outline entirely). */
+.cards-listing.filter .cards-listing-filter:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: -2px;
+}
+
+.cards-listing.filter .cards-listing-filter.active,
+.cards-listing.filter .cards-listing-filter[aria-pressed="true"] {
+  border-bottom-style: none;
+  background-color: var(--dark-color);
+  color: var(--background-color);
+}
+
+@media (width >= 768px) {
+  .cards-listing > ul {
+    justify-content: normal;
+  }
+
+  .cards-listing .cards-listing-card {
+    padding-right: 14px;
+  }
+}

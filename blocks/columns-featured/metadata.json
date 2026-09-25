@@ -1,0 +1,25 @@
+{
+  "variantName": "columns-featured",
+  "baseBlock": "columns",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "purpose": "featured-article-teaser",
+    "imagePattern": "image-left",
+    "structure": "2 columns: large image left (~62%), grey text panel right with pretitle, heading, paragraph, CTA; stacks on mobile"
+  },
+  "contentPattern": "One row, 2 cells: cell 1 = image; cell 2 = pretitle paragraph \"Featured Article\", h2, paragraph, CTA link.",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en.html",
+      "https://wknd.site/us/en/magazine.html"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "columns-featured"
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "variantName": "carousel-hero",
+  "baseBlock": "carousel",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "purpose": "adventure-hero-slider",
+    "imagePattern": "full-bleed",
+    "structure": "image slides + dots + arrows"
+  },
+  "contentPattern": "One row per slide; cell 1 = image (mandatory); cell 2 = text (empty/omitted, no captions on source).",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en/adventures/bali-surf-camp.html"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "carousel-hero"
+  ]
+}

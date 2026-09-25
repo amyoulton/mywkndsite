@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,64 +12,30 @@
  * governing permissions and limitations under the License.
  */
 
+/* rules are grouped by element/section, so specificity does not ascend by position */
+/* stylelint-disable no-descending-specificity */
+
 :root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
-
-  /* nav height */
-  --nav-height: 64px;
+  /* heading sizes (aliases used by blocks; values from brand.css) */
+  --heading-font-size-xxl: var(--heading-size-xxl);
+  --heading-font-size-xl: var(--heading-size-xl);
+  --heading-font-size-l: var(--heading-size-l);
+  --heading-font-size-m: var(--heading-size-m);
+  --heading-font-size-s: var(--heading-size-s);
+  --heading-font-size-xs: var(--heading-size-xs);
 }
 
 /* fallback fonts */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
+  font-family: asar-fallback;
+  size-adjust: 103%;
+  src: local('Georgia');
 }
 
 @font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: source-sans-fallback;
+  size-adjust: 92%;
   src: local('Arial');
-}
-
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
 }
 
 body {
@@ -77,7 +45,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: var(--body-line-height);
 }
 
 body.appear {
@@ -86,6 +54,32 @@ body.appear {
 
 header {
   height: var(--nav-height);
+  background-color: var(--background-color);
+}
+
+/* mobile drawer open: page content slides right with the header (0.5s push) */
+body > main,
+body > footer {
+  transition: transform 0.5s;
+}
+
+body.nav-open {
+  overflow: hidden;
+}
+
+body.nav-open > main,
+body.nav-open > footer {
+  transform: translateX(275px);
+}
+
+/*
+ * fixed WKND header: 25px utility bar + 92px main bar (mobile) / 169px (desktop);
+ * page content starts 13px / 6px below it, as on the source
+ */
+@media (width >= 1200px) {
+  :root {
+    --nav-height: 200px;
+  }
 }
 
 header .header,
@@ -104,20 +98,30 @@ h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 27px;
+  margin-bottom: 13.5px;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 400;
+  line-height: 1.5;
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 { font-size: var(--heading-size-xxl); }
+h2 { font-size: var(--heading-size-xl); }
+h3 { font-size: var(--heading-size-l); }
+
+/* small headings use the body face, uppercase (WKND h4/h5/h6) */
+h4,
+h5,
+h6 {
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+h4 { font-size: var(--heading-size-m); }
+h5 { font-size: var(--heading-size-s); }
+h6 { font-size: var(--heading-size-xs); }
 
 p,
 dl,
@@ -125,8 +129,38 @@ ol,
 ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin-top: 0;
+  margin-bottom: 13.5px;
+}
+
+/* WKND body copy is justified */
+main .default-content-wrapper p {
+  line-height: var(--text-line-height);
+  text-align: justify;
+}
+
+main .default-content-wrapper ul,
+main .default-content-wrapper ol {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+main .default-content-wrapper li {
+  padding-left: 12px;
+  line-height: 2;
+}
+
+blockquote {
+  margin: 0 0 18px;
+  padding: 14px;
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-size-xl);
+  line-height: 1.5;
+}
+
+blockquote p {
+  margin: 0;
+  line-height: inherit;
 }
 
 code,
@@ -142,8 +176,26 @@ pre {
   white-space: pre;
 }
 
-main > div {
-  margin: 40px 16px;
+/* underlined titles: short yellow rule below the heading */
+main .default-content-wrapper > h2,
+main .adventure-details .default-content-wrapper > h1,
+main .faq .default-content-wrapper > h1 {
+  position: relative;
+}
+
+main .default-content-wrapper > h2::after,
+main .adventure-details .default-content-wrapper > h1::after,
+main .faq .default-content-wrapper > h1::after {
+  content: '';
+  display: block;
+  width: 84px;
+  padding-top: 8px;
+  border-bottom: 2px solid var(--brand-yellow);
+}
+
+/* author name in the bio is not underlined */
+main .author-bio .default-content-wrapper > h2::after {
+  content: none;
 }
 
 input,
@@ -156,18 +208,23 @@ button {
 /* links */
 a:any-link {
   color: var(--link-color);
-  text-decoration: none;
+  text-decoration: underline;
   overflow-wrap: break-word;
 }
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
+  text-decoration: none;
 }
 
 /* buttons */
 p.button-wrapper {
-  margin: 12px 0;
+  margin: 0 0 13.5px;
+}
+
+main .default-content-wrapper a.button:any-link {
+  padding: 16px 32px;
+  line-height: 16px;
 }
 
 a.button:any-link,
@@ -178,12 +235,14 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
-  font-weight: 500;
-  line-height: 1.25;
+  border: 0;
+  border-radius: 0;
+  padding: 14px 35px;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
@@ -197,36 +256,26 @@ button.button:disabled {
   pointer-events: none;
 }
 
+/* primary: WKND yellow CTA */
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  background-color: var(--brand-yellow);
+  color: var(--text-color);
 }
 
+/* source keeps the yellow fill on hover */
 a.button.primary:hover,
 a.button.primary:focus-visible,
 button.button.primary:hover,
 button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
+  background-color: var(--brand-yellow);
+  color: var(--text-color);
 }
 
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
+/* secondary: dark outline */
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
+  box-shadow: inset 0 0 0 2px var(--text-color);
   background-color: transparent;
   color: var(--text-color);
 }
@@ -235,27 +284,14 @@ a.button.secondary:hover,
 a.button.secondary:focus-visible,
 button.button.secondary:hover,
 button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
+  background-color: var(--text-color);
+  color: var(--background-color);
 }
 
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-/* high-impact call-to-action */
+/* accent: dark solid */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
+  background-color: var(--text-color);
   color: var(--background-color);
 }
 
@@ -263,19 +299,25 @@ a.button.accent:hover,
 a.button.accent:focus-visible,
 button.button.accent:hover,
 button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
+  background-color: var(--brand-yellow);
+  color: var(--text-color);
 }
 
+a.button.primary[aria-disabled="true"],
+a.button.secondary[aria-disabled="true"],
 a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+button.button:disabled,
+button.button:disabled:hover,
+button.button:disabled:focus-visible {
+  box-shadow: none;
+  background-color: var(--grey-color);
+  color: var(--muted-text-color);
+}
+
+a.button:focus-visible,
+button.button:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
 }
 
 main img {
@@ -297,23 +339,18 @@ main img {
 
 /* sections */
 main > .section {
-  margin: 40px 0;
+  margin: 27px 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--content-padding);
 }
 
 main > .section:first-of-type {
   margin-top: 0;
-}
-
-@media (width >= 900px) {
-  main > .section > div {
-    padding: 0 32px;
-  }
 }
 
 /* section metadata */
@@ -322,4 +359,367 @@ main .section.highlight {
   background-color: var(--light-color);
   margin: 0;
   padding: 40px 0;
+}
+
+main .section.dark {
+  background-color: var(--dark-color);
+  color: var(--background-color);
+  margin: 0;
+  padding: 40px 0;
+}
+
+/* adventure detail: title across the top, trip facts (3/12) beside tabs (9/12) */
+main > .section.adventure-details {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+}
+
+/* the title sits 35px below the carousel on the source (section margin + 8px) */
+main > .section.adventure-details > .default-content-wrapper > h1:first-child {
+  margin-top: 8px;
+}
+
+/* source switches to the sidebar layout above 1024px */
+@media (width >= 1025px) {
+  main > .section.adventure-details {
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 9fr);
+    align-items: start;
+  }
+
+  main > .section.adventure-details > div {
+    max-width: none;
+    margin: 0;
+  }
+
+  main > .section.adventure-details > .default-content-wrapper {
+    grid-column: 1 / -1;
+  }
+}
+
+/*
+ * two-column pages (magazine article, FAQs): the main column sections (8/12)
+ * sit beside a sidebar section (3/12) with a 1/12 gutter; other sections span
+ */
+@media (width >= 900px) {
+  main:has(> .section.article-sidebar),
+  main:has(> .section.faq-sidebar) {
+    display: grid;
+    grid-template-columns:
+      minmax(0, 1fr)
+      minmax(0, calc(var(--content-max-width) * 8 / 12))
+      minmax(0, calc(var(--content-max-width) / 12))
+      minmax(0, calc(var(--content-max-width) * 3 / 12))
+      minmax(0, 1fr);
+    align-content: start;
+  }
+
+  main:has(> .section.article-sidebar) > .section,
+  main:has(> .section.faq-sidebar) > .section {
+    grid-column: 2 / 5;
+    margin: 0;
+  }
+
+  main:has(> .section.article-sidebar) > .section > div,
+  main:has(> .section.faq-sidebar) > .section > div {
+    max-width: none;
+  }
+
+  main:has(> .section.article-sidebar) > .section.article,
+  main:has(> .section.article-sidebar) > .section.author-bio,
+  main:has(> .section.faq-sidebar) > .section.faq {
+    grid-column: 2;
+  }
+
+  main:has(> .section.article-sidebar) > .section.article-sidebar,
+  main:has(> .section.faq-sidebar) > .section.faq-sidebar {
+    grid-column: 4;
+    grid-row: 2 / span 2;
+    padding-top: 27px;
+  }
+
+  /* source sidebar heading sits 18px below the H1 top */
+  main:has(> .section.faq-sidebar) > .section.faq-sidebar {
+    grid-row: 1 / span 2;
+    padding-top: 45px;
+  }
+}
+
+/* magazine article */
+@media (width >= 900px) {
+  /* article body and FAQ sidebar use the full column width (no text inset) */
+  main:has(> .section.article-sidebar) > .section.article > div,
+  main:has(> .section.faq-sidebar) > .section.faq-sidebar > div {
+    padding: 0;
+  }
+}
+
+main > .section.article > .default-content-wrapper > p:first-of-type:not(:has(picture)) {
+  margin-top: 21px;
+  margin-bottom: 21px;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+/* pull quote: grey panel holding the quote, a yellow accent and the attribution */
+main > .section.article blockquote {
+  margin: 32px 0 0;
+  padding: 32px 46px 24px;
+  background-color: var(--grey-color);
+}
+
+main > .section.article blockquote p {
+  line-height: 54px;
+  text-align: left;
+}
+
+main > .section.article blockquote::after {
+  content: '';
+  display: block;
+  width: 80px;
+  margin-top: 8px;
+  border-bottom: 2px solid var(--brand-yellow);
+}
+
+main > .section.article blockquote + p {
+  margin: 0 0 44px;
+  padding: 0 32px 32px;
+  background-color: var(--grey-color);
+  font-size: var(--body-font-size-m);
+  line-height: 45px;
+  text-align: left;
+}
+
+main > .section.article blockquote + p a:any-link,
+main > .section.article blockquote + p u {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+/* article sub-headings and images keep the 14px inset of the source */
+main > .section.article .default-content-wrapper > h2,
+main > .section.article .default-content-wrapper > p:has(> picture) {
+  padding-inline: var(--content-padding);
+}
+
+/* author bio: separator, avatar | name + roles | social buttons */
+main > .section.author-bio .default-content-wrapper {
+  display: grid;
+  grid-template-columns: 60px minmax(0, 1fr) auto;
+  column-gap: 25px;
+  align-items: start;
+  margin: 63px var(--content-padding) 0;
+  padding: 64px 0 0;
+  border-top: 2px solid var(--grey-color);
+}
+
+main > .section.author-bio .default-content-wrapper > * {
+  grid-column: 2;
+  margin: 0;
+  line-height: 1.5;
+}
+
+main > .section.author-bio .default-content-wrapper > p:has(picture) {
+  grid-column: 1;
+  grid-row: 1 / span 2;
+}
+
+main > .section.author-bio .default-content-wrapper img {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: 7px 0;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+main > .section.author-bio .default-content-wrapper > h2 {
+  grid-row: 1;
+  padding-top: 8px;
+  margin-bottom: 4px;
+  font-size: var(--heading-size-l);
+  line-height: 36px;
+}
+
+main > .section.author-bio .default-content-wrapper > h2 + p {
+  grid-row: 2;
+  margin-bottom: 13.5px;
+  color: var(--muted-text-color);
+  font-size: 12px;
+  line-height: 30px;
+  text-transform: uppercase;
+}
+
+/* social links render as dark square buttons, right of the name */
+main > .section.author-bio .default-content-wrapper > p:last-child {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: 3;
+  grid-row: 1 / span 2;
+}
+
+main > .section.author-bio .default-content-wrapper > p:last-child a:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 48px;
+  height: 48px;
+  padding: 0 12px;
+  background-color: var(--text-color);
+  color: var(--grey-color);
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+@media (width < 600px) {
+  main > .section.author-bio .default-content-wrapper > p:last-child {
+    grid-column: 2;
+    grid-row: 3;
+  }
+}
+
+/* article sidebar: PDF download box */
+main > .section.article-sidebar h3 {
+  margin: 7px 0 0;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+main > .section.article-sidebar h3 a:any-link {
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+main > .section.article-sidebar h3 + p {
+  margin: 0;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+/* file details line (name · size · format) */
+main > .section.article-sidebar h3 + p + p:not(.button-wrapper) {
+  margin: 4.5px 0 18px;
+  color: var(--muted-text-color);
+  font-size: 12px;
+  line-height: 12px;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+main > .section.article-sidebar a.button:any-link {
+  min-width: 188px;
+  padding: 16px 35px;
+  background-color: var(--text-color);
+  color: #fff;
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 16px;
+}
+
+/* article sidebar: up-next cards (linked title + date), whole card clickable */
+main > .section.article-sidebar ul {
+  margin: 50px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+main > .section.article-sidebar li {
+  position: relative;
+  box-sizing: border-box;
+  min-height: 136px;
+  margin: 0 0 18px;
+  padding: 8px 16px 8px 21px;
+  border-left: 5px solid var(--grey-color);
+  color: var(--muted-text-color);
+  font-size: 12px;
+  line-height: 18px;
+  text-transform: uppercase;
+}
+
+main > .section.article-sidebar li:hover {
+  border-left-color: var(--text-color);
+  background-color: var(--brand-yellow);
+}
+
+main > .section.article-sidebar li a:any-link {
+  display: inline-block;
+  padding: 5px 0 10px;
+  color: var(--text-color);
+  font-size: var(--body-font-size-m);
+  line-height: 27px;
+  text-decoration: none;
+}
+
+main > .section.article-sidebar li a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+/* default content images sit 7px off the surrounding text */
+main .default-content-wrapper p:has(> picture) {
+  display: flow-root;
+  margin-bottom: 7px;
+}
+
+/* source keeps each h2 in its own wrapper, so its margin adds to the paragraph's */
+main > .section.article .default-content-wrapper > p + h2 {
+  margin-top: 40.5px;
+}
+
+main .default-content-wrapper p > picture img {
+  display: block;
+  margin: 7px 0;
+}
+
+/* FAQs */
+main > .section.faq-sidebar h3 {
+  margin-top: 0;
+}
+
+main > .section.faq-sidebar p {
+  font-size: var(--body-font-size-xs);
+  line-height: 2.5;
+  text-align: left;
+}
+
+main > .section.faq-sidebar a:any-link {
+  text-decoration: none;
+}
+
+/* About Us intro copy (source "small text" style) */
+main > .section.small-text .default-content-wrapper p {
+  font-size: var(--body-font-size-xs);
+  line-height: 35px;
+}
+
+/* divider lines between sections (source separator component) */
+main > .section.divider::before,
+main > .section.divider-medium::before,
+main > .section.divider-after::after {
+  content: '';
+  display: block;
+  box-sizing: border-box;
+  max-width: calc(var(--content-max-width) - 2 * var(--content-padding));
+  margin: 37px auto 64px;
+  border-top: 2px solid var(--grey-color);
+}
+
+main > .section.divider-medium::before {
+  margin: 9px auto 36px;
+}
+
+main > .section.divider-after::after {
+  margin: 64px auto 37px;
 }
