@@ -1,0 +1,116 @@
+/*
+ * hero-teaser: full-bleed photo banner with a white text panel (heading, text, CTA).
+ * Values from the source WKND hero teaser (.cmp-teaser--hero) computed styles.
+ * Below 1165px the photo keeps its natural aspect ratio with the text stacked beneath;
+ * from 1165px the photo is 640px tall and the white panel overlaps its bottom 180px.
+ */
+
+/* full-bleed: release the section's max-width/padding for this block's wrapper */
+.hero-teaser-container .hero-teaser-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-teaser {
+  display: flex;
+  flex-direction: column;
+  max-width: 1680px;
+  margin: 0 auto;
+}
+
+.hero-teaser .hero-teaser-image {
+  width: 100%;
+  overflow: hidden;
+}
+
+.hero-teaser .hero-teaser-image picture {
+  display: block;
+}
+
+/* img stays inline (as on the source): its baseline gap sets the space above the text */
+.hero-teaser .hero-teaser-image img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.hero-teaser.image-bottom .hero-teaser-image img {
+  object-position: center bottom;
+}
+
+.hero-teaser .hero-teaser-content {
+  padding: 0 14px;
+}
+
+.hero-teaser .hero-teaser-content h1,
+.hero-teaser .hero-teaser-content h2,
+.hero-teaser .hero-teaser-content h3 {
+  margin: 18px 0 0;
+}
+
+.hero-teaser .hero-teaser-content p {
+  margin: 0;
+  line-height: 31.5px;
+  text-align: left;
+}
+
+/* CTA: authored as a plain link, rendered as the WKND yellow button */
+.hero-teaser .hero-teaser-content .hero-teaser-action {
+  margin: 18px 0;
+  line-height: var(--body-line-height);
+  text-align: start;
+}
+
+.hero-teaser .hero-teaser-action a:any-link {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 14px 35px;
+  background-color: var(--brand-yellow);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  line-height: 21px;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+.hero-teaser .hero-teaser-action a:hover,
+.hero-teaser .hero-teaser-action a:focus-visible {
+  background-color: var(--brand-yellow);
+  color: var(--text-color);
+  text-decoration: none;
+}
+
+@media (width >= 1165px) {
+  .hero-teaser .hero-teaser-image {
+    height: 640px;
+  }
+
+  .hero-teaser .hero-teaser-image picture,
+  .hero-teaser .hero-teaser-image img {
+    height: 100%;
+  }
+
+  .hero-teaser .hero-teaser-content {
+    position: relative;
+    align-self: center;
+    box-sizing: content-box;
+    width: 1136px;
+    max-width: calc(100% - 56px);
+    min-height: 180px;
+    margin-top: -180px;
+    padding: 0 28px;
+    background-color: var(--background-color);
+  }
+
+  .hero-teaser.hero-teaser-no-image .hero-teaser-content {
+    margin-top: 0;
+  }
+}

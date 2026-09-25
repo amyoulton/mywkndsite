@@ -1,0 +1,86 @@
+/*
+ * table-trip-facts: values from wknd.site .cmp-contentfragment--elements.
+ * Below 1025px the facts float in a wrapping row; from 1025px they stack in the
+ * 3/12 sidebar with a grey left rule.
+ *
+ * The source has two layouts that come from the page's AEM grid, not from content:
+ * - default (climbing-new-zealand, beervana-portland, ...): the facts fill the whole
+ *   column; on desktop they start at the sidebar edge (no gutter), and each item is
+ *   100% of the column plus its border and padding (so it overflows into the gutter).
+ * - inset variant (bali-surf-camp, colorado-rock-climbing, ...): the facts sit in a
+ *   nested grid column: 7/12 on phones, 9/12 on tablets, and inside the 14px gutter
+ *   on desktop.
+ */
+
+/* flow-root keeps the list's 18px margins inside the block (the source list is floated) */
+.table-trip-facts {
+  display: flow-root;
+}
+
+.table-trip-facts .table-trip-facts-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 18px 0;
+  padding: 0;
+}
+
+.table-trip-facts .table-trip-facts-item {
+  box-sizing: border-box;
+  min-height: 84px;
+  margin: 0 0 1.25em;
+  padding: 0 2em 0 0;
+  text-transform: uppercase;
+}
+
+.table-trip-facts .table-trip-facts-label {
+  margin: 0;
+  padding-top: 1em;
+  color: var(--muted-text-color);
+  font-size: 12px;
+}
+
+.table-trip-facts .table-trip-facts-value {
+  margin: 0;
+  padding-top: 0.5em;
+  font-size: var(--body-font-size-xs);
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+/* inset: the nested column spans 7/12 of the page (incl. its 14px gutters) on phones */
+.table-trip-facts.inset {
+  max-width: calc((100% + 2 * var(--content-padding)) * 7 / 12 - 2 * var(--content-padding));
+}
+
+@media (width >= 768px) {
+  .table-trip-facts.inset {
+    max-width: calc((100% + 2 * var(--content-padding)) * 9 / 12 - 2 * var(--content-padding));
+  }
+}
+
+/* from 1025px the section grid places the block in the 3/12 sidebar */
+@media (width >= 1025px) {
+  /* the source facts start at the sidebar edge: cancel the section gutter */
+  .table-trip-facts {
+    margin-inline: calc(-1 * var(--content-padding));
+  }
+
+  .table-trip-facts.inset {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .table-trip-facts .table-trip-facts-list {
+    flex-flow: column nowrap;
+    align-items: stretch;
+  }
+
+  /* source items are width: 100% plus border and padding, so labels/values span the column */
+  .table-trip-facts .table-trip-facts-item {
+    box-sizing: content-box;
+    width: 100%;
+    padding: 0 1em;
+    border-left: 5px solid var(--grey-color);
+  }
+}

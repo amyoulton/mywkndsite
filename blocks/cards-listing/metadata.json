@@ -1,0 +1,31 @@
+{
+  "variantName": "cards-listing",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "purpose": "article-and-adventure-listing",
+    "imagePattern": "image-top",
+    "structure": "grid of linked cards (4 per row on desktop): image, uppercase title, single-line truncated description"
+  },
+  "contentPattern": "One row per card: cell 1 = image; cell 2 = linked title (strong/heading) + description paragraph. Option 'filter': cell 3 = comma-separated categories (may be empty); block renders an 'All' + alphabetical category filter bar above the grid and hides non-matching cards.",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en.html",
+      "https://wknd.site/us/en/magazine.html",
+      "https://wknd.site/us/en/adventures.html"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [
+    {
+      "class": "filter",
+      "label": "Filter"
+    }
+  ],
+  "memberVariantIds": [
+    "cards-listing"
+  ]
+}

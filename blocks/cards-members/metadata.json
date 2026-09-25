@@ -1,0 +1,24 @@
+{
+  "variantName": "cards-members",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "purpose": "members-only-teasers",
+    "imagePattern": "image-bottom",
+    "structure": "grid of gated teasers (3 columns on desktop): lock icon, title heading, short description, inactive 'Read More' pill (plain text, not a link), landscape image below the text"
+  },
+  "contentPattern": "One row per teaser: cell 1 = image; cell 2 = title heading, description paragraph, plain 'Read More' text (not a link; the source is gated for anonymous visitors).",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en/magazine.html"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "cards-members"
+  ]
+}

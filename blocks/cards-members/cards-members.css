@@ -1,0 +1,135 @@
+/*
+ * cards-members: WKND members-only ("secure") list teasers.
+ * Values from computed styles of .teaser.cmp-teaser--secure on wknd.site/us/en/magazine.html.
+ * Source grid: 1 column < 768px, 2 columns (6/12) at 768-1024px, 3 columns (4/12) from 1025px.
+ * Each source column has 14px side padding, i.e. a 28px gutter between cards.
+ */
+.cards-members > ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* The source lock sits on its own 29px line above the teaser content. */
+.cards-members .cards-members-card {
+  position: relative;
+  min-width: 0;
+  padding-top: 29px;
+  color: var(--text-color);
+}
+
+/* Yellow corner triangle with the black lock glyph; not faded like the content. */
+.cards-members .cards-members-card-lock {
+  position: absolute;
+  top: 36.5px;
+  left: 0;
+  z-index: 1;
+  padding: 12px;
+  background-image: linear-gradient(to left top, rgb(255 255 255 / 0%) 0, rgb(255 255 255 / 0%) 50%, var(--brand-yellow) 50%, var(--brand-yellow) 100%);
+  line-height: 24px;
+}
+
+.cards-members .cards-members-card-lock .icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.cards-members .cards-members-card-lock img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* Gated teaser content (text and image) is shown at 65% opacity. */
+.cards-members .cards-members-card-body,
+.cards-members .cards-members-card-image {
+  opacity: 0.65;
+}
+
+/* Source text children do not collapse margins (the CTA is floated); flex keeps that. */
+.cards-members .cards-members-card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.cards-members .cards-members-card-body > * {
+  max-width: 100%;
+}
+
+.cards-members .cards-members-card-title {
+  margin: 9px 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  font-weight: 600;
+  line-height: 27px;
+  text-transform: uppercase;
+}
+
+.cards-members .cards-members-card-description {
+  margin: 0 0 13.5px;
+  color: var(--muted-text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  line-height: 24.5px;
+  text-align: justify;
+  text-transform: uppercase;
+}
+
+/* "Read More" is an inert grey pill (plain text on the source, not a link). */
+.cards-members .cards-members-card-cta {
+  display: block;
+  width: fit-content;
+  margin: 14px 0;
+  padding: 7px 14px;
+  background-color: var(--grey-color);
+  color: var(--muted-text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 21px;
+  text-transform: uppercase;
+}
+
+.cards-members .cards-members-card-cta a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/*
+ * Image below the text: 200px tall, cropped to fill the column. On the source the
+ * image is inline, leaving 7px of line-box descent below it; kept as padding.
+ */
+.cards-members .cards-members-card-image {
+  display: flow-root;
+  padding-bottom: 7px;
+}
+
+.cards-members .cards-members-card-image a {
+  display: block;
+}
+
+.cards-members .cards-members-card-image img {
+  display: block;
+  width: 100%;
+  height: 200px;
+  margin: 7px 0;
+  object-fit: cover;
+}
+
+@media (width >= 768px) {
+  .cards-members > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1025px) {
+  .cards-members > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

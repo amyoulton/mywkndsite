@@ -1,0 +1,140 @@
+/*
+ * Accordion FAQ
+ * Values from computed styles of the WKND source accordion
+ * (.cmp-accordion on /us/en/faqs.html). The source uses the same styles at
+ * every viewport width, so there are no breakpoint rules.
+ *
+ * Item: 2px bottom rule in #ebebeb under each closed question. The rule is
+ * removed while the item is open. Question text: 16px/600, uppercase,
+ * black. Toggle: thin 21x20 plus/minus on the right.
+ * Answer: 14px / 1.75 (24.5px), justified, inset 7px.
+ */
+
+.accordion-faq {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-color);
+}
+
+.accordion-faq .accordion-faq-item-label {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 13.333px;
+  border-bottom: 2px solid var(--grey-color);
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 20px;
+  text-transform: uppercase;
+  cursor: pointer;
+  list-style: none;
+}
+
+.accordion-faq .accordion-faq-item-label::-webkit-details-marker {
+  display: none;
+}
+
+/* The source shows no focus ring. This ring is for keyboard focus only. */
+.accordion-faq .accordion-faq-item-label:focus {
+  outline: none;
+}
+
+.accordion-faq .accordion-faq-item-label:focus-visible {
+  outline: 2px solid currentcolor;
+  outline-offset: -2px;
+}
+
+.accordion-faq .accordion-faq-item[open] > .accordion-faq-item-label {
+  border-bottom: 0;
+}
+
+.accordion-faq .accordion-faq-item-title {
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 8px;
+  overflow-wrap: anywhere;
+}
+
+/* Plus drawn with two bars. The vertical bar collapses to form the minus. */
+.accordion-faq .accordion-faq-item-icon {
+  position: relative;
+  flex: 0 0 auto;
+  width: 21px;
+  height: 20px;
+}
+
+.accordion-faq .accordion-faq-item-icon::before,
+.accordion-faq .accordion-faq-item-icon::after {
+  content: '';
+  position: absolute;
+  background-color: currentcolor;
+}
+
+.accordion-faq .accordion-faq-item-icon::before {
+  top: 9px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+}
+
+.accordion-faq .accordion-faq-item-icon::after {
+  top: 0;
+  left: 10px;
+  width: 2px;
+  height: 100%;
+  transition: transform 0.2s ease;
+}
+
+.accordion-faq .accordion-faq-item[open] .accordion-faq-item-icon::after {
+  transform: scaleY(0);
+}
+
+.accordion-faq .accordion-faq-item-body {
+  padding: 7px 0 13.5px 7px;
+  font-size: var(--body-font-size-xs);
+  line-height: 1.75;
+  text-align: justify;
+  animation: accordion-faq-fade-in 0.5s both;
+}
+
+.accordion-faq .accordion-faq-item-body p,
+.accordion-faq .accordion-faq-item-body ul,
+.accordion-faq .accordion-faq-item-body ol {
+  margin: 0 0 13.5px;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.accordion-faq .accordion-faq-item-body > :first-child {
+  margin-top: 0;
+}
+
+.accordion-faq .accordion-faq-item-body > :last-child {
+  margin-bottom: 0;
+}
+
+.accordion-faq .accordion-faq-item-no-answer .accordion-faq-item-body {
+  padding: 0;
+}
+
+@keyframes accordion-faq-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .accordion-faq .accordion-faq-item-icon::after {
+    transition: none;
+  }
+
+  .accordion-faq .accordion-faq-item-body {
+    animation: none;
+  }
+}

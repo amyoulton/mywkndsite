@@ -1,0 +1,24 @@
+{
+  "variantName": "cards-contributor",
+  "baseBlock": "cards",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "purpose": "contributor-profiles",
+    "imagePattern": "round-avatar-top",
+    "structure": "grid of centered profile cards (4 per row on desktop, 2 tablet, 1 phone): circular avatar, name heading, uppercase roles line, row of square social icon buttons (Facebook, Twitter, Instagram)"
+  },
+  "contentPattern": "One row per person: cell 1 = avatar image; cell 2 = h3 name, paragraph with roles ('Artist | Photographer | Traveler'), paragraph of social links (Facebook, Twitter, Instagram) with the network name as link text so the block can render icon buttons.",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en/about-us.html"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "cards-contributor"
+  ]
+}

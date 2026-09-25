@@ -1,0 +1,25 @@
+{
+  "variantName": "hero-teaser",
+  "baseBlock": "hero",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "purpose": "adventure-promo-banner",
+    "imagePattern": "full-bleed",
+    "structure": "full-bleed image banner with an inset white text panel (heading, paragraph, CTA) overlapping the image bottom; stacks on mobile"
+  },
+  "contentPattern": "Single row, single cell: image, h2 heading, paragraph, CTA link.",
+  "usage": {
+    "pagesUsing": [
+      "https://wknd.site/us/en.html",
+      "https://wknd.site/us/en/adventures.html"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-09-25"
+  },
+  "canonicalModel": "standalone",
+  "options": [],
+  "memberVariantIds": [
+    "hero-teaser"
+  ]
+}
