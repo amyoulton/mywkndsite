@@ -1,0 +1,152 @@
+/*
+ * newsletter: WKND 2.0 yellow email sign-up band.
+ * Values from Figma (WKND-2.0, frame "newsletter" 18:4361, 1440x428).
+ */
+.newsletter {
+  --newsletter-bg: #ffeb00;
+  --newsletter-color: var(--text-color);
+  --newsletter-padding: 56px 24px;
+  --newsletter-heading-size: 34px;
+  --newsletter-heading-line-height: 44px;
+  --newsletter-form-max-width: 520px;
+  --newsletter-input-bg: var(--background-color);
+  --newsletter-button-bg: var(--dark-color);
+  --newsletter-button-color: var(--background-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  box-sizing: border-box;
+  padding: var(--newsletter-padding);
+  background-color: var(--newsletter-bg);
+  color: var(--newsletter-color);
+  text-align: center;
+}
+
+main > .section.newsletter-container {
+  margin: 0;
+}
+
+main > .section.newsletter-container > .newsletter-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.newsletter .newsletter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.newsletter .newsletter-content > * {
+  margin: 0;
+}
+
+.newsletter .newsletter-content p {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.newsletter .newsletter-content > .newsletter-eyebrow {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.newsletter .newsletter-content :is(h1, h2, h3) {
+  color: var(--newsletter-color);
+  font-family: var(--display-font-family);
+  font-size: var(--newsletter-heading-size);
+  font-weight: 400;
+  line-height: var(--newsletter-heading-line-height);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.newsletter .newsletter-content a:any-link {
+  color: inherit;
+}
+
+.newsletter .newsletter-form {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: var(--newsletter-form-max-width);
+  margin: 0;
+  padding: 10px;
+}
+
+.newsletter .newsletter-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.newsletter .newsletter-form input {
+  flex: 1;
+  min-width: 0;
+  box-sizing: border-box;
+  height: 52px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 6px 16px;
+  background-color: var(--newsletter-input-bg);
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 40px;
+}
+
+.newsletter .newsletter-form input::placeholder {
+  color: var(--text-color);
+  opacity: 1;
+}
+
+.newsletter .newsletter-submit {
+  flex: none;
+  height: 52px;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  padding: 0 20px;
+  background-color: var(--newsletter-button-bg);
+  color: var(--newsletter-button-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.newsletter .newsletter-form input:focus-visible,
+.newsletter .newsletter-submit:focus-visible {
+  outline: 2px solid var(--newsletter-button-bg);
+  outline-offset: 2px;
+}
+
+@media (width >= 900px) {
+  .newsletter {
+    --newsletter-padding: 80px 48px;
+    --newsletter-heading-size: 48px;
+    --newsletter-heading-line-height: 56px;
+  }
+
+  .newsletter .newsletter-content p {
+    line-height: 40px;
+  }
+}
+
+@media (width >= 1200px) {
+  .newsletter {
+    --newsletter-padding: 80px 120px;
+  }
+}

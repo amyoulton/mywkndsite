@@ -1,0 +1,174 @@
+/*
+ * cards-adventure: WKND 2.0 "Choose your adventure" trip cards.
+ * Values from Figma (WKND-2.0, frame "adventures-grid" 16:4312, 1440x955).
+ */
+.cards-adventure {
+  --cards-adventure-bg: var(--light-color);
+  --cards-adventure-padding: 56px 24px;
+  --cards-adventure-gap: 40px;
+  --cards-adventure-card-gap: 24px;
+  --cards-adventure-card-bg: var(--background-color);
+  --cards-adventure-card-shadow: var(--card-shadow);
+  --cards-adventure-image-height: 280px;
+  --cards-adventure-eyebrow-color: var(--subtle-text-color);
+  --cards-adventure-heading-color: var(--text-color);
+  --cards-adventure-heading-size: 32px;
+  --cards-adventure-heading-line-height: 44px;
+  --cards-adventure-title-color: var(--text-color);
+  --cards-adventure-text-color: var(--subtle-text-color);
+  --cards-adventure-cta-bg: #ffeb00;
+  --cards-adventure-cta-color: var(--text-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--cards-adventure-gap);
+  box-sizing: border-box;
+  padding: var(--cards-adventure-padding);
+  background-color: var(--cards-adventure-bg);
+}
+
+main > .section.cards-adventure-container {
+  margin: 0;
+}
+
+main > .section.cards-adventure-container > .cards-adventure-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.cards-adventure .cards-adventure-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.cards-adventure .cards-adventure-header > * {
+  margin: 0;
+}
+
+.cards-adventure .cards-adventure-eyebrow {
+  color: var(--cards-adventure-eyebrow-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.cards-adventure .cards-adventure-header :is(h1, h2, h3) {
+  color: var(--cards-adventure-heading-color);
+  font-family: var(--display-font-family);
+  font-size: var(--cards-adventure-heading-size);
+  font-weight: 400;
+  line-height: var(--cards-adventure-heading-line-height);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.cards-adventure .cards-adventure-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--cards-adventure-card-gap);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+
+.cards-adventure .cards-adventure-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 10px;
+  background-color: var(--cards-adventure-card-bg);
+  box-shadow: var(--cards-adventure-card-shadow);
+}
+
+.cards-adventure .cards-adventure-card-image picture {
+  display: block;
+}
+
+.cards-adventure .cards-adventure-card-image img {
+  display: block;
+  width: 100%;
+  height: var(--cards-adventure-image-height);
+  object-fit: cover;
+}
+
+.cards-adventure .cards-adventure-card-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 24px;
+}
+
+.cards-adventure .cards-adventure-card-body > * {
+  margin: 0;
+}
+
+.cards-adventure .cards-adventure-card-body :is(h2, h3, h4) {
+  color: var(--cards-adventure-title-color);
+  font-family: var(--display-font-family);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 36px;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.cards-adventure .cards-adventure-card-body p {
+  color: var(--cards-adventure-text-color);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+/* keep the CTAs level across cards of different copy length */
+.cards-adventure .cards-adventure-card-body > .button-wrapper:last-child {
+  margin-top: auto;
+}
+
+main .cards-adventure a.button:any-link,
+main .cards-adventure a.button:hover {
+  padding: 20px;
+  background-color: var(--cards-adventure-cta-bg);
+  color: var(--cards-adventure-cta-color);
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+}
+
+@media (width >= 768px) {
+  .cards-adventure .cards-adventure-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 900px) {
+  .cards-adventure {
+    --cards-adventure-padding: 80px 48px;
+    --cards-adventure-gap: 48px;
+    --cards-adventure-card-gap: 32px;
+    --cards-adventure-heading-size: 40px;
+    --cards-adventure-heading-line-height: 55px;
+  }
+}
+
+@media (width >= 1100px) {
+  .cards-adventure .cards-adventure-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 1200px) {
+  .cards-adventure {
+    --cards-adventure-padding: 80px 120px;
+  }
+}

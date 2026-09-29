@@ -1,0 +1,136 @@
+/*
+ * columns-intro: WKND 2.0 text + image intro ("Why Winter").
+ * Values from Figma (WKND-2.0, frame "why-winter" 13:4188, 1440x510).
+ */
+.columns-intro {
+  --columns-intro-padding: 48px 24px;
+  --columns-intro-gap: 40px;
+  --columns-intro-content-gap: 24px;
+  --columns-intro-content-max-width: 594px;
+  --columns-intro-text-max-width: 574px;
+  --columns-intro-eyebrow-color: var(--subtle-text-color);
+  --columns-intro-heading-color: #000;
+  --columns-intro-heading-size: 30px;
+  --columns-intro-heading-line-height: 44px;
+  --columns-intro-text-color: #000;
+  --columns-intro-image-max-width: 520px;
+
+  box-sizing: border-box;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: var(--columns-intro-padding);
+  background-color: var(--background-color);
+}
+
+main > .section.columns-intro-container {
+  margin: 0;
+}
+
+main > .section.columns-intro-container > .columns-intro-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.columns-intro .columns-intro-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--columns-intro-gap);
+}
+
+.columns-intro .columns-intro-row + .columns-intro-row {
+  margin-top: var(--columns-intro-gap);
+}
+
+.columns-intro .columns-intro-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--columns-intro-content-gap);
+  max-width: var(--columns-intro-content-max-width);
+  padding: 10px;
+}
+
+.columns-intro .columns-intro-content > * {
+  margin: 0;
+}
+
+.columns-intro .columns-intro-content p {
+  max-width: var(--columns-intro-text-max-width);
+  color: var(--columns-intro-text-color);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.columns-intro .columns-intro-content > .columns-intro-eyebrow {
+  color: var(--columns-intro-eyebrow-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.columns-intro .columns-intro-content h2,
+.columns-intro .columns-intro-content h3 {
+  color: var(--columns-intro-heading-color);
+  font-family: var(--display-font-family);
+  font-size: var(--columns-intro-heading-size);
+  font-weight: 400;
+  line-height: var(--columns-intro-heading-line-height);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+/* CTA: outlined dark button (authored as an emphasised link) */
+main .columns-intro a.button:any-link {
+  padding: 20px;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+}
+
+.columns-intro .columns-intro-image {
+  width: 100%;
+  max-width: var(--columns-intro-image-max-width);
+}
+
+.columns-intro .columns-intro-image picture {
+  display: block;
+}
+
+.columns-intro .columns-intro-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 52 / 35;
+  object-fit: cover;
+}
+
+@media (width >= 900px) {
+  .columns-intro {
+    --columns-intro-padding: 40px 48px;
+    --columns-intro-heading-size: 36px;
+    --columns-intro-heading-line-height: 60px;
+  }
+
+  .columns-intro .columns-intro-row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 430px;
+  }
+
+  .columns-intro .columns-intro-content {
+    flex: 0 1 var(--columns-intro-content-max-width);
+  }
+
+  .columns-intro .columns-intro-image {
+    flex: 0 1 var(--columns-intro-image-max-width);
+  }
+}
+
+@media (width >= 1200px) {
+  .columns-intro {
+    --columns-intro-padding: 40px 120px;
+  }
+}

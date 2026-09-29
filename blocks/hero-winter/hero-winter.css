@@ -1,0 +1,109 @@
+/*
+ * hero-winter: WKND 2.0 winter hero.
+ * Values from Figma (WKND-2.0, frame "hero" 12:4141, 1440x850).
+ */
+.hero-winter {
+  --hero-winter-min-height: 480px;
+  --hero-winter-padding: 40px 24px;
+  --hero-winter-gap: 32px;
+  --hero-winter-overlay: rgb(32 32 32 / 25%);
+  --hero-winter-heading-color: var(--background-color);
+  --hero-winter-heading-size: 36px;
+  --hero-winter-heading-line-height: 46px;
+  --hero-winter-heading-tracking: 0.06em;
+  --hero-winter-heading-max-width: 693px;
+  --hero-winter-cta-bg: #ffeb00;
+  --hero-winter-cta-color: var(--text-color);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  box-sizing: border-box;
+  min-height: var(--hero-winter-min-height);
+  padding: var(--hero-winter-padding);
+  background-color: transparent;
+  isolation: isolate;
+}
+
+/* full-bleed: the hero spans the viewport and sits flush with the next section */
+main > .section.hero-winter-container {
+  margin: 0;
+}
+
+main > .section.hero-winter-container > .hero-winter-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.hero-winter .hero-winter-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hero-winter .hero-winter-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-winter::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--hero-winter-overlay);
+}
+
+.hero-winter .hero-winter-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--hero-winter-gap);
+}
+
+.hero-winter .hero-winter-content > * {
+  margin: 0;
+}
+
+.hero-winter h1,
+.hero-winter h2 {
+  max-width: var(--hero-winter-heading-max-width);
+  color: var(--hero-winter-heading-color);
+  font-family: var(--body-font-family);
+  font-size: var(--hero-winter-heading-size);
+  font-weight: 700;
+  line-height: var(--hero-winter-heading-line-height);
+  letter-spacing: var(--hero-winter-heading-tracking);
+  text-transform: uppercase;
+}
+
+main .hero-winter a.button:any-link,
+main .hero-winter a.button:hover {
+  padding: 20px;
+  background-color: var(--hero-winter-cta-bg);
+  color: var(--hero-winter-cta-color);
+  font-size: 16px;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+}
+
+@media (width >= 900px) {
+  .hero-winter {
+    --hero-winter-min-height: 640px;
+    --hero-winter-padding: 40px 80px 80px;
+    --hero-winter-gap: 48px;
+    --hero-winter-heading-size: 52px;
+    --hero-winter-heading-line-height: 66px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-winter {
+    --hero-winter-min-height: 850px;
+    --hero-winter-heading-size: 64px;
+    --hero-winter-heading-line-height: 80px;
+  }
+}

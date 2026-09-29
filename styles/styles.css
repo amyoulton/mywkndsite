@@ -33,6 +33,12 @@
 }
 
 @font-face {
+  font-family: source-serif-fallback;
+  size-adjust: 104%;
+  src: local('Georgia');
+}
+
+@font-face {
   font-family: source-sans-fallback;
   size-adjust: 92%;
   src: local('Arial');

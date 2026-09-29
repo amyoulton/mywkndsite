@@ -1,0 +1,128 @@
+/*
+ * columns-highlights: WKND 2.0 dark "Why WKND" band with accent-ruled highlights.
+ * Values from Figma (WKND-2.0, frame "why-wknd" 16:4276, 1440x544).
+ */
+.columns-highlights {
+  --columns-highlights-bg: var(--dark-color);
+  --columns-highlights-padding: 56px 24px;
+  --columns-highlights-gap: 48px;
+  --columns-highlights-item-gap: 32px;
+  --columns-highlights-item-width: 340px;
+  --columns-highlights-accent: #ffeb00;
+  --columns-highlights-eyebrow-color: var(--brand-yellow);
+  --columns-highlights-heading-color: var(--background-color);
+  --columns-highlights-heading-size: 30px;
+  --columns-highlights-heading-line-height: 44px;
+  --columns-highlights-title-color: var(--background-color);
+  --columns-highlights-text-color: var(--grey-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--columns-highlights-gap);
+  box-sizing: border-box;
+  padding: var(--columns-highlights-padding);
+  background-color: var(--columns-highlights-bg);
+}
+
+main > .section.columns-highlights-container {
+  margin: 0;
+}
+
+main > .section.columns-highlights-container > .columns-highlights-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.columns-highlights .columns-highlights-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 10px;
+  text-align: center;
+}
+
+.columns-highlights .columns-highlights-header > * {
+  margin: 0;
+}
+
+.columns-highlights .columns-highlights-eyebrow {
+  color: var(--columns-highlights-eyebrow-color);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.columns-highlights .columns-highlights-header :is(h1, h2, h3) {
+  color: var(--columns-highlights-heading-color);
+  font-family: var(--display-font-family);
+  font-size: var(--columns-highlights-heading-size);
+  font-weight: 400;
+  line-height: var(--columns-highlights-heading-line-height);
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.columns-highlights .columns-highlights-items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--columns-highlights-item-gap);
+  box-sizing: border-box;
+  width: 100%;
+  max-width: calc(3 * var(--columns-highlights-item-width) + 2 * 48px + 20px);
+  margin: 0;
+  padding: 10px;
+  list-style: none;
+}
+
+.columns-highlights .columns-highlights-item {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-sizing: border-box;
+  padding: 10px 10px 10px 14px;
+  border-left: 3px solid var(--columns-highlights-accent);
+  color: var(--columns-highlights-text-color);
+  font-size: 20px;
+  line-height: 28px;
+}
+
+.columns-highlights .columns-highlights-item > * {
+  margin: 0;
+}
+
+.columns-highlights .columns-highlights-item > .columns-highlights-title {
+  color: var(--columns-highlights-title-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.columns-highlights .columns-highlights-item a:any-link {
+  color: var(--columns-highlights-title-color);
+}
+
+@media (width >= 900px) {
+  .columns-highlights {
+    --columns-highlights-padding: 80px 48px;
+    --columns-highlights-gap: 64px;
+    --columns-highlights-heading-size: 36px;
+    --columns-highlights-heading-line-height: 60px;
+  }
+
+  .columns-highlights .columns-highlights-items {
+    flex-direction: row;
+    justify-content: center;
+    gap: 48px;
+  }
+
+  .columns-highlights .columns-highlights-item {
+    flex: 0 1 var(--columns-highlights-item-width);
+  }
+}

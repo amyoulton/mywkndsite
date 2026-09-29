@@ -1,0 +1,18 @@
+{
+  "pageName": "winter-adventures",
+  "fileKey": "Au3uY1v2KdmBnMNm7AbOlW",
+  "pageNodeId": "11:492",
+  "frameWidth": 1440,
+  "totalBlocks": 5,
+  "siteChrome": [
+    { "nodeId": "11:493", "figmaName": "nav", "y": 0, "height": 100, "note": "site header (existing header block)" },
+    { "nodeId": "18:4372", "figmaName": "footer", "y": 3387, "height": 332, "note": "site footer (existing footer block)" }
+  ],
+  "blocks": [
+    { "order": 1, "nodeId": "12:4141", "figmaName": "hero", "suggestedBlockType": "hero", "suggestedVariantName": "hero-winter", "width": 1440, "height": 850, "y": 100, "status": "pending", "hasImages": true, "imageValidation": "pending" },
+    { "order": 2, "nodeId": "13:4188", "figmaName": "why-winter", "suggestedBlockType": "columns", "suggestedVariantName": "columns-intro", "rowCount": 1, "cellsPerRow": 2, "width": 1440, "height": 510, "y": 950, "status": "pending", "hasImages": true, "imageValidation": "pending" },
+    { "order": 3, "nodeId": "16:4276", "figmaName": "why-wknd", "suggestedBlockType": "columns", "suggestedVariantName": "columns-highlights", "rowCount": 1, "cellsPerRow": 3, "width": 1440, "height": 544, "y": 1460, "status": "pending", "hasImages": false, "imageValidation": "n/a" },
+    { "order": 4, "nodeId": "16:4312", "figmaName": "adventures-grid", "suggestedBlockType": "cards", "suggestedVariantName": "cards-adventure", "width": 1440, "height": 955, "y": 2004, "status": "pending", "hasImages": true, "imageValidation": "pending" },
+    { "order": 5, "nodeId": "18:4361", "figmaName": "newsletter", "suggestedBlockType": "newsletter", "suggestedVariantName": "newsletter", "width": 1440, "height": 428, "y": 2959, "status": "pending", "hasImages": false, "imageValidation": "n/a" }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "pageName": "winter-adventures",
+  "imageDirectory": "content/images/winter-adventures",
+  "assets": [
+    {
+      "blockOrder": 1,
+      "blockVariant": "hero-winter",
+      "figmaNode": "12:4141",
+      "localPath": "./images/winter-adventures/hero-skier.jpg",
+      "usage": "content-image",
+      "status": "supplied",
+      "note": "Clean hero photo supplied by the user (5376x3584, resized to 2880w). Figma export was flattened with text baked in. hero-placeholder.jpg is now unreferenced."
+    },
+    {
+      "blockOrder": 2,
+      "blockVariant": "columns-intro",
+      "figmaNode": "13:4192",
+      "localPath": "./images/winter-adventures/why-winter-mountains.jpg",
+      "usage": "content-image",
+      "status": "downloaded"
+    },
+    {
+      "blockOrder": 4,
+      "blockVariant": "cards-adventure",
+      "figmaNode": "17:4325",
+      "localPath": "./images/winter-adventures/card-downhill-wyoming.jpg",
+      "usage": "content-image",
+      "status": "downloaded"
+    },
+    {
+      "blockOrder": 4,
+      "blockVariant": "cards-adventure",
+      "figmaNode": "17:4326",
+      "localPath": "./images/winter-adventures/card-ski-touring-mont-blanc.jpg",
+      "usage": "content-image",
+      "status": "downloaded"
+    },
+    {
+      "blockOrder": 4,
+      "blockVariant": "cards-adventure",
+      "figmaNode": "17:4328",
+      "localPath": "./images/winter-adventures/card-tahoe-skiing.jpg",
+      "usage": "content-image",
+      "status": "downloaded"
+    }
+  ],
+  "summary": {
+    "totalDiscovered": 5,
+    "totalDownloaded": 5,
+    "totalMissing": 0
+  }
+}

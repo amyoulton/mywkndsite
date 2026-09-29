@@ -7,6 +7,9 @@
   --heading-font-family: asar, asar-fallback, georgia, "Times New Roman", times, serif;
   --body-font-family: "Source Sans Pro", source-sans-fallback, "Helvetica Neue", helvetica, arial, sans-serif;
 
+  /* WKND 2.0 display serif (Figma: Source Serif Pro) */
+  --display-font-family: "Source Serif Pro", source-serif-fallback, georgia, "Times New Roman", times, serif;
+
   /* colors */
   --background-color: #fff;
   --text-color: #202020;
@@ -17,6 +20,10 @@
   --grey-color: #ebebeb;
   --muted-text-color: #696969;
   --dark-color: #202020;
+
+  /* WKND 2.0 (Figma) */
+  --subtle-text-color: #909090;
+  --card-shadow: 0 4px 16px 0 rgb(0 0 0 / 8%);
 
   /* layout */
   --content-max-width: 1164px;
